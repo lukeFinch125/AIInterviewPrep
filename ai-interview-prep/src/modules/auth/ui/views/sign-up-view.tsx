@@ -19,6 +19,9 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
+import { IoLogoGithub } from "react-icons/io5";
 
 const formSchema = z.object({
     email: z.string().email(),
@@ -34,6 +37,7 @@ const formSchema = z.object({
 export const SignUpView = () => {
     const [error, setError] = useState<string | null>(null);
     const [pending, setPending] = useState(false);
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -59,6 +63,7 @@ export const SignUpView = () => {
             {
                 onSuccess: () => {
                     setPending(false);
+                    router.push("/");
                 },
                 onError: (error) => {
                     setPending(false);
@@ -200,24 +205,24 @@ export const SignUpView = () => {
                                         Or continue with
                                     </span>
                                 </div>
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-2 gap-4 pl-30 pr-30">
                                     <Button
                                         onClick = {() => onSocial("google") }
                                         disabled={pending}
                                         variant="outline"
                                         type="button"
-                                        className="w-full"
+                                        className="w-10"
                                     >
-                                        Google
+                                        <FcGoogle />
                                     </Button>
                                     <Button
                                         onClick = {() => onSocial("github") }
                                         disabled={pending}
                                         variant="outline"
                                         type="button"
-                                        className="w-full"
+                                        className="w-10"
                                     >
-                                        Github
+                                        <IoLogoGithub />
                                     </Button>
                                 </div>
                                 <div className="text-center text-sm">
