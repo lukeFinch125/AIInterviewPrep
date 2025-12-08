@@ -1,5 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import Dashboard from "@/modules/home/ui/dashboard";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import Dashboard from "@/modules/dashboard/ui/components/dashboard";
 
 interface Props {
     children: React.ReactNode;
@@ -11,8 +11,7 @@ const Layout = ({ children }: Props) => {
             defaultOpen= { true }
         >
             <Dashboard />
-            <main>
-                <SidebarTrigger />
+            <main className="flex flex-col h-screen w-screen bg-muted">
                 {children}
             </main>
         </SidebarProvider>
