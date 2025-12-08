@@ -157,7 +157,7 @@ export const SignInView = () => {
                                         Or continue with
                                     </span>
                                 </div>
-                                <div className="grid grid-cols-2 gap-4 pl-30 pr-30">
+                                <div className="grid grid-cols-2 gap-4 items-center justify-items-center">
                                     <Button
                                         onClick = {() => onSocial("google") }
                                         disabled={pending}
@@ -187,7 +187,7 @@ export const SignInView = () => {
                         </form>
                     </Form>
 
-                    <div className="bg-radial from-gray-600 to-gray-900 relative hidden md:flex flex-col gap-y-4 items-center justify-center">
+                    <div className="bg-radial from-background to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center">
                         <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" />
                         <p className="text-2xl font-semibold text-white">
                             Meet.AI

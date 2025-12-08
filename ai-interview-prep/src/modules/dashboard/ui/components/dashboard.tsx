@@ -35,6 +35,14 @@ const Dashboard = () => {
         },
     ]
 
+    const secondSection = [
+        {
+            title: "Upgrade",
+            url: "/upgrade",
+            icon: Star
+        }
+    ]
+
     return ( 
         <Sidebar>
             <SidebarHeader className="text-sidebar-accent-foreground">
@@ -44,7 +52,7 @@ const Dashboard = () => {
                 </Link>
             </SidebarHeader>
             <div className="px-4 py-2">
-                <Separator className="opacity-100 text-[black border" />
+                <Separator className="opacity-100 text-[black border]" />
             </div>
             <SidebarContent>
                 <SidebarGroup>
@@ -53,8 +61,8 @@ const Dashboard = () => {
                             {firstSection.map((item) => (
                                 <SidebarMenuItem key={item.url}>
                                     <SidebarMenuButton asChild className={cn(
-                                        "h-10 hover:bg-liner-to-r/oklch border border-transparent hover:border-[#5D6B68]/10 from-sidebar-accent from-5% via-30% via-sidebar/50",
-                                        pathname === item.url && "bg-linear-to-r/oklch border-[#5D6B68]/10"
+                                        "h-10 hover:bg-linear-to-r/oklch border border-transparent hover:border-[#5D6b68]/10 from-sidebar-accent from-5% via-30% via-sidebar/50 to-sidebar/50",
+                                        pathname === item.url && "border-white"
                                     )}
                                     isActive={pathname === item.url}
                                     >
@@ -67,18 +75,27 @@ const Dashboard = () => {
                             ))}
                         </SidebarMenu>
                         <div className="px-4 py-2">
-                            <Separator className="opacity-100 text-[black border" />
+                            <Separator className="opacity-100 text-[black border]" />
                         </div>
                         <span className="my-2 h-px w-full bg-black/20"/>
                         <SidebarMenu>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <a href="/upgrade">
-                                        <Star />
-                                        <span>Upgrade</span>
-                                    </a>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
+                            <SidebarMenu>
+                            {secondSection.map((item) => (
+                                <SidebarMenuItem key={item.url}>
+                                    <SidebarMenuButton asChild className={cn(
+                                        "h-10 hover:bg-linear-to-r/oklch border border-transparent hover:border-[#5D6b68]/10 from-sidebar-accent from-5% via-30% via-sidebar/50 to-sidebar/50",
+                                        pathname === item.url && "border-white"
+                                    )}
+                                    isActive={pathname === item.url}
+                                    >
+                                        <a href={item.url}>
+                                            <item.icon className="size-5"/>
+                                            <span className="text-sm font-medium tracking-tight">{item.title}</span>
+                                        </a>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
